@@ -1,0 +1,21 @@
+# 生产环境
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/blog
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  #jpa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  #日志
+logging:
+  level:
+    root: info
+    top.yangcc: debug
+  file:
+    name: log/blog-dev.log

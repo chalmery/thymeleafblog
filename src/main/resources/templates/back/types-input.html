@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="back/_fragments :: head(~{::title})">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"/>
+    <title>分类新增</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="back/_fragments :: menu(2) "></nav>
+
+<div class="ui attached pointing menu">
+    <div class="ui container">
+        <div class="right menu">
+            <a href="#" th:href="@{/back/types}" class="item">列表</a>
+            <a href="#" th:href="@{/back/types/input}" class="item teal active">新增</a>
+        </div>
+    </div>
+
+    </div>
+
+    <!--中部-->
+    <div class="m-container m-padded-tb-bog">
+        <div class="ui container">
+            <form action="#" method="post" th:object="${type}" th:action="*{id}==null ? @{/back/types} : @{/back/types/{id}(id=*{id})}" class="ui form">
+                <input type="hidden" name="id" th:value="*{id}">
+                <!--图片的地址-->
+                <div class="required field">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label">分类名称</label>
+                        <input type="text" name="name" placeholder="分类名称" th:value="*{name}">
+                    </div>
+                </div>
+                <!--提示内容-->
+                <div class="ui error message"></div>
+                <!--/*/
+                <div class="ui negative  message" th:if="${#fields.hasErrors('name')}">
+                    <i class="close icon"></i>
+                    <div class="header">验证失败</div>
+                    <p th:errors="*{name}">失败</p>
+                </div>
+                /*/-->
+                <!---->
+                <div class="ui right aligned  container">
+                    <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                    <button class="ui submit teal button">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<!--页脚-->
+<footer th:replace="back/_fragments :: footer"></footer>
+</body>
+<!--js-->
+<!--/*/<th:blocak th:replace="back/_fragments :: script">/*/-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<!--/*/</th:blocak>/*/-->
+<script>
+    /*按钮点击，展示导航*/
+    $('.menu.toggle').click(function (){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+    /*表单教研*/
+    $('.ui.form').form({
+       fields: {
+           name:{
+               identifier: 'name',
+               rules: [{
+                   type: 'empty',
+                   prompt: '标题:请输入分类'
+               }],
+           }
+       }
+    });
+    // 点击关闭message
+    $('.message .close')
+        .on('click',function (){
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+</script>
+</html>

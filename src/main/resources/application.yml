@@ -1,0 +1,6 @@
+# thymeleaf默认模版
+spring:
+  thymeleaf:
+    mode: HTML
+  profiles:
+    active: pro

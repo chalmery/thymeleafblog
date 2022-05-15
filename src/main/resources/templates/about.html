@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>关于我</title>
+</head>
+<body>
+    <!--导航-->
+    <nav th:replace="_fragments :: menu(5) "></nav>
+    <!--中部-->
+    <div class="m-container m-padded-tb-bog">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--左侧-->
+                <div class="eleven wide column">
+                    <img src="https://picsum.photos/id/349/1000/800" alt="" class="ui rounded image">
+                </div>
+                <!--右侧-->
+                <div class="five wide column">
+                    <div class="ui top attached segment">
+                        <div class="ui header">关于我</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <p class="m-text-thin">小杨,编程萌新,随便写写</p>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui orange basic label">Java</div>
+                        <div class="ui orange basic label">Linux</div>
+                        <div class="ui orange basic label">Mysql</div>
+                    </div>
+<!--                    <div class="ui attached segment">
+                        <div class="ui teal basic label">Minecraft</div>
+                        <div class="ui teal basic label">DontStarve</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui brown  basic label">星火</div>
+                        <div class="ui brown  basic label">三体</div>
+                    </div>-->
+                    <div class="ui bottom attached segment">
+                        <a href="https://github.com/sunnyday999" target="_blank" class="ui circular icon button"><i class="github icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--页脚-->
+    <footer th:replace="_fragments :: footer"></footer>
+</body>
+<!--js-->
+<!--/*/<th:blocak th:replace="_fragments :: script">/*/-->
+<!--/*/</th:blocak>/*/-->
+<script>
+    /*按钮点击，展示导航*/
+    $('.menu.toggle').click(function (){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+</script>
+</html>

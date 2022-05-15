@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>error</title>
+</head>
+<body>
+    <div>错误</div>
+
+    <!--展示异常信息，并且客户看不到-->
+    <div>
+        <div th:utext="'&lt;!--'" th:remove="tag"></div>
+        <!--请求地址-->
+        <div th:utext="'Failed Request URL : ' + ${url}" th:remove="tag"></div>
+        <!--打印异常-->
+        <div th:utext="'Exception message : ' + ${exception.message}" th:remove="tag"></div>
+        <!--循环打印-->
+        <ul th:remove="tag">
+            <li th:each="st : ${exception.stackTrace}" th:remove="tag"><span th:utext="${st}" th:remove="tag"></span></li>
+        </ul>
+        <div th:utext="'--&gt;'" th:remove="tag"></div>
+    </div>
+</body>
+</html>
